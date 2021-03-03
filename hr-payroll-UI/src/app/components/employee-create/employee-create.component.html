@@ -1,0 +1,91 @@
+<div class="col-md-6 offset-md-3">
+    <div class="example-container">
+        <div class="form-container">
+             <h3>Employee Details</h3>
+             <form [formGroup]="loginForm">
+             
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label> First Name
+                    </mat-label>
+                    <input matInput formControlName="firstName" required [(ngModel)]="employee.firstName">
+                    <mat-error *ngIf="loginForm.controls.firstName.touched && loginForm.controls.firstName.invalid">
+                      <span *ngIf="loginForm.controls.firstName.errors.required">This field is mandatory.</span>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="form-field" appearance="outline">
+                    <mat-label> Last Name
+                    </mat-label>
+                    <input matInput formControlName="lastName" required [(ngModel)]="employee.lastName">
+                    <mat-error *ngIf="loginForm.controls.lastName.touched && loginForm.controls.lastName.invalid">
+                      <span *ngIf="loginForm.controls.lastName.errors.required">This field is mandatory.</span>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="form-field" appearance="outline">
+                <mat-label> Email
+                </mat-label>
+                <input matInput formControlName="email" required [(ngModel)]="employee.email">
+                <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+                  <span *ngIf="loginForm.controls.email.errors.required">This field is mandatory.</span>
+                  <span *ngIf="loginForm.controls.email.errors.pattern">Please enter a valid email</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label> Base Salary
+                </mat-label>
+                <input matInput formControlName="baseSalary" required [(ngModel)]="employee.baseSalary">
+                <mat-error *ngIf="loginForm.controls.baseSalary.touched && loginForm.controls.baseSalary.invalid">
+                  <span *ngIf="loginForm.controls.baseSalary.errors.required">This field is mandatory.</span>
+                  <span *ngIf="loginForm.controls.baseSalary.errors.pattern">Please enter only numbers</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label> Staff Level
+                </mat-label>
+                <input matInput formControlName="stafflevel" required [(ngModel)]="employee.stafflevel">
+                <mat-error *ngIf="loginForm.controls.stafflevel.touched && loginForm.controls.stafflevel.invalid">
+                  <span *ngIf="loginForm.controls.stafflevel.errors.required">This field is mandatory.</span>
+                  <span *ngIf="loginForm.controls.stafflevel.errors.pattern">This field is invalid.</span>
+                </mat-error>
+              </mat-form-field>
+              <button mat-raised-button color="primary" type="submit" *ngIf="create && loginForm.valid" (click)='createEmployee()' >Create Employee</button>
+              <button mat-raised-button color="primary" type="submit" *ngIf="edit" (click)='editEmployee()'>Edit Employee</button>
+        <!-- <button class="btn btn-success" type="submit" (click)='editEmployee()' >Edit</button> -->
+            </form>
+    <!-- <div class="conatiner">
+    <form>
+    
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" id="firstName" 
+            [(ngModel)]="employee.firstName" name="firstName">
+    
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" id="lastName"
+            [(ngModel)]="employee.lastName" name="lastName">
+    
+        </div>
+
+        <div class="form-group">
+            <label>Email Id</label>
+            <input type="text" class="form-control" id="email"
+            [(ngModel)]="employee.email" name="email">
+    
+        </div>
+    
+        <div class="form-group">
+            <label>Base Salary</label>
+            <input type="text" class="form-control" id="baseSalary"
+            [(ngModel)]="employee.baseSalary" name="baseSalary">
+    
+        </div>
+        <button class="btn btn-success" type="submit" (click)='createEmployee()' >Submit</button>
+        <button class="btn btn-success" type="submit" (click)='editEmployee()' >Edit</button>
+    </form>
+    </div> -->
+    </div>
+    </div>
+    </div>
+    
