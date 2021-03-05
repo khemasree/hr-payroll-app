@@ -1,18 +1,19 @@
 const express = require('express');
+const math = require('mathjs');
 const router = express.Router();
 const employee = require('../../app/models/employee');
 const ObjectId = require('mongodb').ObjectID;
 
+//Find all employees
 exports.findAll = async function (req, res) {
     await employee.find().then(employee => {
-        console.log('employee', employee)
         res.status(200).json(employee);
     }).catch(err => {
         res.status(500).send(err);
     })
 }
 
-//create employee
+//create an employee
 exports.create = async function (req, res) {
     var employeeData = req.body;
     var baseSalary = employeeData.baseSalary;
@@ -23,9 +24,9 @@ exports.create = async function (req, res) {
         "medicare": 1.45
     }
     if (baseSalary) {
-        employeeData.socialSecurityTax = (baseSalary * deductions["socialSecurity"]) / 100;
-        employeeData.federalTax = (baseSalary * deductions["federalTax"]) / 100;
-        employeeData.medicare = (baseSalary * deductions["medicare"]) / 100;
+        employeeData.socialSecurityTax = math.round(baseSalary * deductions["socialSecurity"]) / 100;
+        employeeData.federalTax = math.round(baseSalary * deductions["federalTax"]) / 100;
+        employeeData.medicare = math.round(baseSalary * deductions["medicare"]) / 100;
         totalDeductions = employeeData.socialSecurityTax + employeeData.federalTax + employeeData.medicare;
     }
     salary = baseSalary - totalDeductions;
@@ -45,7 +46,7 @@ exports.findOne = async function (req, res) {
         }).catch(err => res.status(500).send(err));
 }
 
-//Update employee
+//Update an employee
 exports.update = async function (req, res) {
     var employeeData = req.body;
     var baseSalary = employeeData.baseSalary;
@@ -61,6 +62,10 @@ exports.update = async function (req, res) {
         employeeData.medicare = (baseSalary * deductions["medicare"]) / 100;
         totalDeductions = employeeData.socialSecurityTax + employeeData.federalTax + employeeData.medicare;
     }
+    console.log('employeeData.socialSecurityTax',employeeData.socialSecurityTax)
+    console.log('employeeData.socialSecurityTax.tpfixed',employeeData.socialSecurityTax.toFixed(2))
+    console.log('employeeData.socialSecurityTax/100',Math.round(employeeData.socialSecurityTax)/100)
+
     salary = baseSalary - totalDeductions;
     employeeData['salary'] = salary;
     var newEmployee = {
@@ -87,17 +92,3 @@ exports.delete= async function(req,res){
         if(!emp){res.status(404).send()}
         res.status(200).send()}).catch(err=>res.status(500).send())
 }
-
-
-//var mongojs=require('mongojs');
-//var db=mongojs('mongodb+srv://mongouser1:mongouser1@cluster0.yt8nk.mongodb.net/employees?retryWrites=true&w=majority',['employee_data']);
-
-
-// exports.getEmployees = async function(req,res){
-//     await db.employee.find(function(err, employees){
-//         if(err){
-//             return res.status(500).send(err);
-//         }
-//         return res.status(200).json(employees);
-//     }
-// }

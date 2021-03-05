@@ -1,3 +1,11 @@
+<p>
+  <mat-toolbar>
+    <span>HR Payroll</span>
+    <span class="add-spacer"></span>
+    <button mat-flat-button [routerLink]="['/employees/add']" >Add Employee</button>
+  </mat-toolbar>
+</p>
+
 <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8" matSort matSortStart="desc" (matSortChange)="customSort($event)">
 
     <ng-container matColumnDef="firstName">

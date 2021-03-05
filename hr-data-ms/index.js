@@ -25,16 +25,3 @@ console.log('server listening on port',port);
 });
 
 app.use('/', employees);
-
-// app.use((eq, res, next) =>{
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization', );
-//     next();
-// });
-
-
-
-// app.get('/employee',(req,res)=>{
-//     console.log('hello')
-// })

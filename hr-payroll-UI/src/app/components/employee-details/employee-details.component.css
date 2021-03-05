@@ -9,3 +9,13 @@ th.mat-header-cell {
     text-align: left;
     max-width: 300px;
 }
+
+.add-spacer {
+    flex: 1 1 auto;
+  }
+
+
+  .mat-toolbar {
+    background: grey;
+    color: #fff;
+ }

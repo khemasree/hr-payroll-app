@@ -1,4 +1,4 @@
-.example-container{
+.create-employee-container{
     text-align: center
 }
 
@@ -11,3 +11,8 @@
 .form-field{
     display: block
 }
+
+.mat-toolbar {
+    background: grey;
+    color: #fff
+ }

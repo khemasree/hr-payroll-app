@@ -20,7 +20,6 @@ export class EmployeeCreateComponent implements OnInit {
     private router:Router, private route:ActivatedRoute, private formBuilder:FormBuilder) { }
 
   onSubmit(){
-    console.log('submitted',this.employee)
     this.createEmployee();
   }
 
@@ -28,8 +27,7 @@ export class EmployeeCreateComponent implements OnInit {
   {
     this.employeeService.createEmployee('add/employee',this.employee).subscribe(data=>
       {
-        console.log('posted data',data),
-        this.router.navigate(['/'])
+        this.router.navigate(['/employees/'])
       },
       error=>console.log(error))
   }
@@ -38,13 +36,12 @@ export class EmployeeCreateComponent implements OnInit {
   {
     this.employeeService.editEmployee('employee',this.employee,this.id).subscribe(data=>
       {
-        console.log('posted data',data)
+        this.router.navigate(['/employees/'])
       },
       error=>console.log(error))
   }
 
   getEmployee(id){
-    console.log('in get')
     this.employeeService.getEmployeeById('employee',id).subscribe(data=> 
       {
         this.employee.firstName=data.firstName;
@@ -53,8 +50,6 @@ export class EmployeeCreateComponent implements OnInit {
         this.employee.stafflevel=data.stafflevel;
         this.employee.baseSalary=data.baseSalary;
       })
-
-      console.log(this.employee);
   }
 
 
@@ -71,7 +66,6 @@ export class EmployeeCreateComponent implements OnInit {
      if(params.id) {this.getEmployee(params.id)}});
      if(this.id !== undefined)
      {
-       console.log('djfhkjgfdj')
         this.edit=true;
         this.create=false;
      }

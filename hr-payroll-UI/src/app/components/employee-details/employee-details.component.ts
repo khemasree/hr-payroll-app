@@ -25,7 +25,7 @@ export class EmployeeDetailsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
+   // this.dataSource.sort = this.sort;
   }
 
   public customSort = (event) => {
@@ -34,9 +34,7 @@ export class EmployeeDetailsComponent implements OnInit, AfterViewInit {
 
   public getAllEmployees=()=> {
     this.employeeService.getAllEmployees('employees').subscribe((res)=>{
-      console.log('res234',res)
       this.dataSource=res
-      console.log(this.dataSource.data)
     })
  }
 

@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
-//import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { EmployeeCreateComponent } from './components/employee-create/employee-create.component';
 import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeCreateComponent,
     EmployeeDetailsComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -25,8 +27,8 @@ import { HeaderComponent } from './header/header.component';
     FormsModule ,
     MaterialModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
-    //FlexLayoutModule,
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
